@@ -1,18 +1,36 @@
 <template>
   <div class="home">
-    <h1>{{ msg }}</h1>
+    <h1 v-on:click="getTemps()">{{ msg }}</h1>
+    <h1>extruderTemp {{ extruderTemp }}</h1>
+    <h1>platformTemp {{ platformTemp }}</h1>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'home',
-
+  computed: {
+    ...mapGetters({
+      extruderTemp: 'extruderTemp',
+      platformTemp: 'platformTemp',
+    }),
+  },
   data() {
     return {
       msg: 'Home',
     };
+  },
+  methods: {
+    ...mapActions([
+      'getTemps',
+    ]),
+  },
+  created() {
+    window.setInterval(() => {
+      this.getTemps();
+    }, 1000);
   },
 };
 </script>

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import * as actions from './actions';
 import * as getters from './getters';
 import files from './modules/files';
+import printer from './modules/printer';
 // import types from './mutation-types';
 
 Vue.use(Vuex);
@@ -17,6 +18,7 @@ export default new Vuex.Store({
   getters,
   modules: {
     files,
+    printer,
   },
   mutations: {
     // eslint-disable-next-line

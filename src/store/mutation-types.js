@@ -1,2 +1,2 @@
 export const RECIEVE_FILES = 'RECIEVE_FILES';
-export const RECIEVE_FILES1 = 'RECIEVE_FILES';
+export const RECIEVE_TEMPS = 'RECIEVE_TEMPS';
