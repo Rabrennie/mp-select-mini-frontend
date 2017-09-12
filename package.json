@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "feather-icons": "^3.2.2",
     "vue": "^2.4.2",
     "vue-native-websocket": "^2.0.3",
     "vue-resource": "^1.3.4",
