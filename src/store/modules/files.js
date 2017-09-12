@@ -1,4 +1,3 @@
-import printer from '../../api/printer';
 import * as types from '../mutation-types';
 
 const state = {
@@ -10,10 +9,11 @@ const getters = {
 };
 
 const actions = {
-  getAllFiles({ commit }) {
-    printer.getFiles((files) => {
-      commit(types.RECIEVE_FILES, { files });
-    });
+  getAllFiles() {
+    // initialize sd card
+    this.$socket.send('M21');
+    // request file list
+    this.$socket.send('M20 S2');
   },
 };
 
