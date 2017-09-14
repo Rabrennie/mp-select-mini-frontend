@@ -10,7 +10,7 @@ import store from './store';
 
 Vue.config.productionTip = false;
 
-Vue.use(VueWebsocket, 'ws://192.168.1.194:81', { store });
+Vue.use(VueWebsocket, `ws://${process.env.WS_HOST}:${process.env.WS_PORT}`, { store });
 store.$socket = Vue.prototype.$socket;
 
 Vue.use(VueResource);
@@ -38,7 +38,6 @@ const routes = [
 
 Vue.http.interceptors.unshift((request, next) => {
   const route = routes.find(item => (request.method === item.method && request.url === item.url));
-
   if (!route) {
     // we're just going to return a 404 here
     next(request.respondWith({ status: 404, statusText: 'Oh no! Not found!' }));

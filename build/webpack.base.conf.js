@@ -2,6 +2,8 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require('webpack')
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') })
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -71,5 +73,11 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.WS_HOST': JSON.stringify(process.env.WS_HOST),
+      'process.env.WS_PORT': JSON.stringify(process.env.WS_PORT),
+    }),
+  ],
 }
