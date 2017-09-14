@@ -5,12 +5,14 @@
   "author": "Rab Rennie",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "dev": "run-p websocket dev-server",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "dev-server": "node build/dev-server.js",
+    "websocket": "node src/dev/websocket.js"
   },
   "dependencies": {
     "feather-icons": "^3.2.2",
@@ -63,6 +65,7 @@
     "karma-spec-reporter": "0.0.31",
     "karma-webpack": "^2.0.2",
     "mocha": "^3.2.0",
+    "npm-run-all": "^4.1.1",
     "opn": "^5.1.0",
     "optimize-css-assets-webpack-plugin": "^2.0.0",
     "ora": "^1.2.0",
@@ -80,7 +83,8 @@
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "ws": "^3.1.0"
   },
   "engines": {
     "node": ">= 4.0.0",
